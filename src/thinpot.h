@@ -103,7 +103,6 @@ class Thinpot {
         bool collision_ = false;
         std::array<bool, 4> get_data_{{false, false, false, false}};
         float length_[4]; // 接触位置の脚先からの距離
-        float radius_ = 2.0;
         uint8_t error_ = 0;
         unsigned long last_time_millis_ = 0;
 
@@ -125,7 +124,4 @@ class Thinpot {
         bool checkCollision();
 
         inline void setOffset(const float value) {offset_ = std::abs(value);}
-        inline void setRadius(const float value) {radius_ = std::abs(value);}
-
-        inline const float getRadius() const {return radius_;}
 };

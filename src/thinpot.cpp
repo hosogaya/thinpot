@@ -158,13 +158,12 @@ void Thinpot::VolToLength(const uint16_t voltage[4], uint16_t length[4]){
 }
 
 bool Thinpot::checkCollision() {
-    uint16_t voltage[4];
+    uint16_t voltage[4], len[4];
     readADC(voltage);
-    // uint16_t length[4];
-    VolToLength(voltage, length_);
+    VolToLength(voltage, len);
     last_time_millis_ = millis();
     
-    bool collision = false;
+    collision_ = false;
     for (uint8_t i = 0; i < 4; ++i) {
         if (voltage[i] > 4000) {
             get_data_[i] = false; 
@@ -172,9 +171,9 @@ bool Thinpot::checkCollision() {
         }
         else {
             get_data_[i] = true;
-            length_[i] = length_[i] + offset_; // 
-            collision = true;
+            length_[i] = len[i] + offset_; // 
+            collision_ = true;
         }
     }
-    return collision;
+    return collision_;
 }
