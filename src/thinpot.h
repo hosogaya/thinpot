@@ -102,7 +102,7 @@ class Thinpot {
     public:
         bool collision_ = false;
         std::array<bool, 4> get_data_{{false, false, false, false}};
-        float length_[4]; // 接触位置の脚先からの距離
+        std::array<float, 4> length_; // 接触位置の脚先からの距離
         uint8_t error_ = 0;
         unsigned long last_time_millis_ = 0;
 
